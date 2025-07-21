@@ -1,16 +1,49 @@
 package org.example
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+    println(Calculator.pi)
+    val a = B()
+    a.a()
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+//Another way to give default implementation for abstract methods
+    val ob: A = object : A() {
+        override fun a() {
+            println("Default implementation for abstract method")
+
+        }
+
     }
+    ob.a()
+    val callback: Callback = object : Callback {
+        override fun call() {
+            println("Default implementation for abstract method using interface")
+        }
+
+    }
+    callback.call()
+
+
+}
+
+class Calculator {
+    companion object Constants {
+        val pi = 3
+    }
+}
+
+
+abstract class A {
+    abstract fun a()
+}
+
+interface Callback {
+    fun call()
+}
+
+//First way to give default implementation for abstract methods
+class B : A() {
+    override fun a() {
+        println("I am class B")
+    }
+
 }
